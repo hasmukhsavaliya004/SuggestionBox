@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SuggestionBox.Suggestion>
+@{
+    ViewBag.Title = "ViewSuggestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    Total : <b>@Model.Count()</b>
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                    <h4>Hello Admin @Html.ActionLink("Logout", "Logout", "Account")</h4>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="example">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Suggestion Message</th>
+                            <th style="text-align: center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SuggestionMessage)</td>
+                                 <td style="text-align: center;">
+                                     <a href='@Url.Action("DeleteSuggestion", "Suggestion", new { id = item.SuggestionId })' title="Remove" 
+                                         onclick="return confirm('Are you sure you want to remove this suggestion');">Remove</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuggestionBoxDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SuggestionBoxDBModelStoreContainer">
+    <EntitySet Name="Suggestion" EntityType="SuggestionBoxDBModel.Store.Suggestion" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Suggestion">
+    <Key>
+      <PropertyRef Name="SuggestionId" />
+    </Key>
+    <Property Name="SuggestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="SuggestionMessage" Type="varchar" MaxLength="500" />
+  </EntityType>
+</Schema>

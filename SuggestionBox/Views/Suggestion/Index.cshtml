@@ -1,0 +1,101 @@
+﻿@model SuggestionBox.Suggestion
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <div class="nopadding">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>Enter your suggession</h3>
+                    </div>
+                    <div class="col-md-4" style="text-align: right;">
+                        <h3>@Html.ActionLink("Administrator Login", "Login", "Account")</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        <b>Please enter your suggestion for your favorite product</b>
+                    </div>
+                    <div class="col-md-6" style="text-align: right;">
+                        <b>Note: All fields are mandatory</b>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Suggestion", FormMethod.Post, new { @data_toggle = "validator", enctype = "multipart/form-data", id = "UserForm" }))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Name">Name: </label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(t => t.Name, new { Class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Email">Email: </label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(t => t.Email, new { Class = "form-control", required = "required", @type = "email" })
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Email">Suggesion: </label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(ta => ta.SuggestionMessage, new { Class = "form-control", required = "required", rows="6" })
+                            </div>
+                        </div>
+                    </div>
+                       
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                    </div> 
+                    <div class="h-divider"></div>
+                    <div class="row nopadding">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                            </div>
+                            <div class="col-md-3" style="padding-right: 0 !important">
+                                <div class="form-group">
+                                    <input type="submit" value="Add Suggestion" class="btn btn-primary form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(ViewBag.Success))
+        {
+            <div class="alert alert-success">@ViewBag.Success</div>
+        }
+    </div>
+    <div class="col-md-2"></div>
+</div>
