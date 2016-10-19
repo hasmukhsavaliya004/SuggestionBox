@@ -25,7 +25,8 @@ namespace SuggestionBox.Controllers
                 ViewBag.Success = "Thank you for sharing you suggestion.";
             else
                 ViewBag.Success = "There is some error to add your suggestion, please try again.";
-            return View();
+            Suggestion objModel = new Suggestion();
+            return View(objModel);
         }
 
         [LoginFilterAttribute]
